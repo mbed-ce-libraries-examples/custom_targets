@@ -1,20 +1,40 @@
 {
     "BLUEPILL_F103C8": {
 	    "inherits": ["MCU_STM32F103x8"],
-        "overrides": {"clock_source": "USE_PLL_HSE_XTAL"},
+        "overrides": {"clock-source": "USE_PLL_HSE_XTAL"},
         "device_has_add": ["USBDEVICE"],
-        "device_name": "STM32F103C8"
+        "memory_banks": {
+            "IRAM": {
+                "access": {
+                    "execute": false,
+                    "read": true,
+                    "write": true
+                },
+                "default": true,
+                "size": 20480,
+                "start": 536870912,
+                "startup": false
+            },
+            "IROM": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": false
+                },
+                "default": true,
+                "size": 65536,
+                "start": 134217728,
+                "startup": true
+            }
+        },
     },
     "ADV_WISE_1570": {
         "inherits": [
             "MCU_STM32L486xG"
         ],
         "overrides": {
-            "clock_source": "USE_PLL_HSE_XTAL"
+            "clock-source": "USE_PLL_HSE_XTAL"
         },
-        "detect_code": [
-            "0460"
-        ],
         "macros_add": [
             "WISE_1570"
         ],
@@ -40,10 +60,41 @@
             "USBDEVICE",
             "QSPI"
         ],
-        "detect_code": [
-            "0313"
-        ],
-        "device_name": "STM32L496VGTx"
+        "memory_banks": {
+            "IROM": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": false
+                },
+                "default": true,
+                "size": 1048576,
+                "start": 134217728,
+                "startup": true
+            },
+            "IRAM1": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": true,
+                "size": 262144,
+                "start": 536870912,
+                "startup": false
+            },
+            "IRAM2": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": false,
+                "size": 65536,
+                "start": 268435456,
+                "startup": false
+            }
+        },
     },
 	"RHOMBIO_L476DMW1K": {
         "inherits": [
@@ -51,9 +102,6 @@
         ],
         "components_add": [
             "QSPIF"
-        ],
-        "detect_code": [
-            "1500"
         ],
         "device_has_add": [
             "QSPI"
@@ -65,27 +113,58 @@
             "MCU_STM32F439xI"
         ],
         "config": {
-            "clock_source_usb": {
+            "clock-source-usb": {
                 "help": "As 48 Mhz clock is configured for USB, SYSCLK has to be reduced from 180 to 168 MHz (set 0 for the max SYSCLK value)",
                 "value": "0",
                 "macro_name": "CLOCK_SOURCE_USB"
             }
         },
         "overrides": {
-            "clock_source": "USE_PLL_HSE_XTAL|USE_PLL_HSI",
+            "clock-source": "USE_PLL_HSE_XTAL|USE_PLL_HSI",
             "network-default-interface-type": "CELLULAR"
         },
         "device_has_remove": [
             "CAN"
         ],
-        "detect_code": [
-            "9015"
-        ],
-        "device_name": "STM32F439VITx",
         "components_add": [
             "SD",
             "QUECTEL_BG96"
         ],
+        "memory_banks": {
+            "IROM": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": false
+                },
+                "default": true,
+                "size": 2097152,
+                "start": 134217728,
+                "startup": true
+            },
+            "IRAM1": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": true,
+                "size": 196608,
+                "start": 536870912,
+                "startup": false
+            },
+            "IRAM2": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": false,
+                "size": 65536,
+                "start": 268435456,
+                "startup": false
+            }
+        },
         "image_url": "https://os.mbed.com/media/cache/platforms/Wio_3G-1.png.250x250_q85.png.250x250_q85.png"
     },
 	"WIO_3G": {
@@ -93,23 +172,54 @@
             "MCU_STM32F439xI"
         ],
         "config": {
-            "clock_source_usb": {
+            "clock-source-usb": {
                 "help": "As 48 Mhz clock is configured for USB, SYSCLK has to be reduced from 180 to 168 MHz (set 0 for the max SYSCLK value)",
                 "value": "1",
                 "macro_name": "CLOCK_SOURCE_USB"
             }
         },
         "overrides": {
-            "clock_source": "USE_PLL_HSE_XTAL|USE_PLL_HSI",
+            "clock-source": "USE_PLL_HSE_XTAL|USE_PLL_HSI",
             "network-default-interface-type": "CELLULAR"
         },
-        "detect_code": [
-            "9014"
-        ],
         "components_add": [
             "QUECTEL_UG96"
         ],
-        "device_name": "STM32F439VITx",
+        "memory_banks": {
+            "IROM": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": false
+                },
+                "default": true,
+                "size": 2097152,
+                "start": 134217728,
+                "startup": true
+            },
+            "IRAM1": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": true,
+                "size": 196608,
+                "start": 536870912,
+                "startup": false
+            },
+            "IRAM2": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": false,
+                "size": 65536,
+                "start": 268435456,
+                "startup": false
+            }
+        },
         "image_url": "https://os.mbed.com/media/cache/platforms/Wio_3G.png.250x250_q85.png"
     },
 	"MTS_DRAGONFLY_F413RH": {
@@ -120,7 +230,7 @@
             "ARDUINO_UNO"
         ],
         "config": {
-            "hse_value": {
+            "hse-value": {
                 "help": "HSE via 26MHz xtal",
                 "value": "26000000",
                 "macro_name": "HSE_VALUE"
@@ -128,11 +238,8 @@
         },
         "overrides": {
             "tickless-from-us-ticker": true,
-            "lse_available": 0
+            "lse-available": 0
         },
-        "detect_code": [
-            "0316"
-        ],
         "device_has_remove": [
             "SERIAL_FC"
         ],
@@ -140,7 +247,30 @@
             "SPIF",
             "TELIT_HE910"
         ],
-        "device_name": "STM32F413RHTx",
+        "memory_banks": {
+           "IROM": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": false
+                },
+                "default": true,
+                "size": 1572864,
+                "start": 134217728,
+                "startup": true
+            },
+            "IRAM": {
+                "access": {
+                    "execute": true,
+                    "read": true,
+                    "write": true
+                },
+                "default": true,
+                "size": 327680,
+                "start": 536870912,
+                "startup": false
+            }
+        },
         "image_url": "https://static-data2.manualslib.com/product-images/de1/2702201/multitech-multiconnect-dragonfly-mtq-mna1-b02.jpg"
     },
 }
